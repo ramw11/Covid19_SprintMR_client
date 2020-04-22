@@ -19,7 +19,7 @@ let redis = require('redis'),
         host: 'cv19redis-001.d9jy7a.0001.euw1.cache.amazonaws.com'
     });
 
-isESClientAlive(clientRedis);
+//isESClientAlive(clientRedis);
 
 exports.getLastKnown = function (req, res) {
     console.log('/getLastKnown');
