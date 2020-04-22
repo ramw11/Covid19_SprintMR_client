@@ -84,7 +84,7 @@ exports.esTimeQuery = function (req,res) {
 // access with 'http://{url}/esGetPatient?id={id}'
 exports.esGetPatientMR = function (req, res) {
     console.log('/getPatient');
-    let paramId = req.query.id;
+    let patientId = req.query.id;
     if (paramId != undefined) {
         client_prd.search({
             index: 'measure_results_v5', //config
@@ -92,7 +92,7 @@ exports.esGetPatientMR = function (req, res) {
             body: {
                 sort: [{ "timeTag": { "order": "desc" } }],
                 query: {
-                    match: { patientId: CURR_PATIENT_ID }
+                    match: { patientId: patientId }
                 }
             }
         },
