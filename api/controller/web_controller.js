@@ -164,11 +164,11 @@ async function isESClientAlive(client) {
     }, function (error) {
         if (error) {
             console.error('elasticsearch cluster is down!');
-            log('elasticsearch cluster is down!');
+            //log('elasticsearch cluster is down!');
             return false;
         } else {
             console.log('Everything is ok');
-            log('Everything is ok');
+            //log('Everything is ok');
             return true;
         }
     });
