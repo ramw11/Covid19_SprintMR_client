@@ -1,6 +1,6 @@
 {
     "server":{
-        "port": 3000
+        "port": 6000
     },
     "es":{
         "endpoint": "https://search-covid198-es-2-x6zr2th7oiq7sjzp653cs3k3xm.eu-west-1.es.amazonaws.com",
