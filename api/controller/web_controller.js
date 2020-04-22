@@ -21,6 +21,7 @@ let redis = require('redis'),
 
 
 exports.getLastKnown = function (req, res) {
+    console.log('/getLastKnown');
     clientRedis.hgetall("LastKnown", function (err, obj) {
         if (err) {
             console.log(err);
@@ -35,6 +36,7 @@ exports.getLastKnown = function (req, res) {
 }
 
 exports.getLastUpdate = function (req, res) {
+    console.log('/getLastUpdate');
     clientRedis.hgetall("last_update", function (err, obj) {
         if (err) {
             console.log(err);
@@ -49,6 +51,7 @@ exports.getLastUpdate = function (req, res) {
 }
 
 exports.esTimeQuery = function (req,res) {
+    console.log('/esTimeQuery');
     let from = req.query.from;
     let to = req.query.to;
 
@@ -79,6 +82,7 @@ exports.esTimeQuery = function (req,res) {
 
 // access with 'http://{url}/esGetPatient?id={id}'
 exports.esGetPatientMR = function (req, res) {
+    console.log('/getPatient');
     let paramId = req.query.id;
     if (paramId != undefined) {
         client_prd.search({
@@ -108,6 +112,7 @@ exports.esGetPatientMR = function (req, res) {
 }
 
 exports.esGetAllSensors = function (req, res) {
+    console.log('/getAllSensors');
     esQuery('sensors_v1', 'sensor', (hits) => {
         req.send(hits);
         req.end();
@@ -127,6 +132,7 @@ exports.esGetAllPatients = function (req, res) {
 }
 
 async function esQuery(idx, req_type, onSuccess, onErr) {
+    console.log('/getAllPatients');
     client_prd.search({
         index: idx,
         type: req_type,
