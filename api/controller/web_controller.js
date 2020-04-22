@@ -51,40 +51,43 @@ exports.getLastUpdate = function (req, res) {
     });
 }
 
-exports.esTimeQuery = function (req,res) {
+exports.esTimeQuery = function (req, res) {
     console.log('/esTimeQuery');
     let from = req.query.from;
     let to = req.query.to;
-
-    client_prd.search({
-        index: 'measure_results_v5', // to config
-        size: 100,
-        body: {
-            sort: [{ "timeTag": { "order": "desc" } }],
-            query: {
-                "range": { "timeTag": { "gte": from, "lt": to } }
-            },
-        } //  TIMETAG = now - 1 hour
-    },
-        function (err, resp, status) {
-            if (resp) {
-                // do something
-                console.log(resp.hits.hits);
-                res.send(resp.hits.hits);
-                res.end();
-            }
-            else {
-                console.log(err);
-                res.send('ERROR: ' + err);
-                res.end();
-            }
-        });
+    console.log(`from=${from}   to=${to}`);
+    if (from != undefined && to != undefined) {
+        client_prd.search({
+            index: 'measure_results_v5', // to config
+            size: 100,
+            body: {
+                sort: [{ "timeTag": { "order": "desc" } }],
+                query: {
+                    "range": { "timeTag": { "gte": from, "lt": to } }
+                },
+            } //  TIMETAG = now - 1 hour
+        },
+            function (err, resp, status) {
+                if (resp) {
+                    // do something
+                    console.log(resp.hits.hits);
+                    res.send(resp.hits.hits);
+                    res.end();
+                }
+                else {
+                    console.log(err);
+                    res.send('ERROR: ' + err);
+                    res.end();
+                }
+            });
+    }
 }
 
 // access with 'http://{url}/esGetPatient?id={id}'
 exports.esGetPatientMR = function (req, res) {
     console.log('/getPatient');
     let patientId = req.query.id;
+    console.log(`patient id=${patientId}`);
     if (patientId != undefined) {
         client_prd.search({
             index: 'measure_results_v5', //config
@@ -96,19 +99,19 @@ exports.esGetPatientMR = function (req, res) {
                 }
             }
         },
-        function (err, resp, status) {
-            if (resp) {
-                // do something
-                console.log(resp.hits.hits);
-                res.send(resp.hits.hits);
-                res.end();
-            }
-            else {
-                console.log(err);
-                res.send('ERROR: ' + err);
-                res.end();
-            }
-        });
+            function (err, resp, status) {
+                if (resp) {
+                    // do something
+                    console.log(resp.hits.hits);
+                    res.send(resp.hits.hits);
+                    res.end();
+                }
+                else {
+                    console.log(err);
+                    res.send('ERROR: ' + err);
+                    res.end();
+                }
+            });
     }
 }
 
