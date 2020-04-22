@@ -85,7 +85,7 @@ exports.esTimeQuery = function (req,res) {
 exports.esGetPatientMR = function (req, res) {
     console.log('/getPatient');
     let patientId = req.query.id;
-    if (paramId != undefined) {
+    if (patientId != undefined) {
         client_prd.search({
             index: 'measure_results_v5', //config
             size: 1000,
