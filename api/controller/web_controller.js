@@ -19,6 +19,7 @@ let redis = require('redis'),
         host: 'cv19redis-001.d9jy7a.0001.euw1.cache.amazonaws.com'
     });
 
+isESClientAlive(clientRedis);
 
 exports.getLastKnown = function (req, res) {
     console.log('/getLastKnown');
@@ -157,18 +158,18 @@ async function esQuery(idx, req_type, onSuccess, onErr) {
     );
 }
 
-// async function isESClientAlive(client) {
-//     let isAlive = await client.ping({
-//         requestTimeout: 30000,
-//     }, function (error) {
-//         if (error) {
-//             console.error('elasticsearch cluster is down!');
-//             log('elasticsearch cluster is down!');
-//             return false;
-//         } else {
-//             console.log('Everything is ok');
-//             log('Everything is ok');
-//             return true;
-//         }
-//     });
-// }
+async function isESClientAlive(client) {
+    let isAlive = await client.ping({
+        requestTimeout: 30000,
+    }, function (error) {
+        if (error) {
+            console.error('elasticsearch cluster is down!');
+            log('elasticsearch cluster is down!');
+            return false;
+        } else {
+            console.log('Everything is ok');
+            log('Everything is ok');
+            return true;
+        }
+    });
+}
