@@ -1,0 +1,152 @@
+<form class="example-form">
+    <mat-label style="color:darkgray; font-size: small;">Sensors:</mat-label>
+    <br/>
+    <br/>
+    <table mat-table 
+        #table
+        [dataSource]="sensorsDataSource" 
+        class="mat-elevation-z8" 
+        style="width: 80%;"
+        >
+    <!-- UnitID Column -->
+    <ng-container matColumnDef="unit_id">
+    <th mat-header-cell *matHeaderCellDef> UnitID </th>
+    <td mat-cell *matCellDef="let element"> {{element.unit_id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name_tag">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name_tag}} </td>
+    </ng-container>
+
+    <!-- Vendor Column -->
+    <ng-container matColumnDef="vendor_name">
+    <th mat-header-cell *matHeaderCellDef> Vendor </th>
+    <td mat-cell *matCellDef="let element"> {{element.vendor_name}} </td>
+    </ng-container>
+
+    <!--Release Col-->
+    <ng-container matColumnDef="remove">
+        <th mat-header-cell *matHeaderCellDef class="col_class"></th>
+        <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)='removeSensorFromPatient(element)'>
+            <mat-icon>highlight_off</mat-icon>
+        </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <br/>
+    <mat-form-field style="width: 65%;">
+        <mat-label style="color: black;">{{sensor1.name_tag}}</mat-label>
+        <mat-select [(value)]="sensor1" (selectionChange) = 'setSensors()'>
+            <mat-option *ngFor="let s of sensors" [value]="s">{{s.name_tag}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <label style="visibility: hidden;">...</label>
+    <button mat-raised-button color='primary' (click)='AddSensorToPatient()'>Add</button>
+    <!--<label style="visibility: hidden;">...</label>
+    <mat-form-field style="width: 230px;">
+        <mat-label style="color: black;">{{sensor2.UnitID}}</mat-label>
+        <mat-select [(value)]="sensor2" (selectionChange) = 'setSensors()'>
+            <mat-option *ngFor="let s of sensors" [value]="s">{{s.UnitID}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <label style="visibility: hidden;">...</label>
+    <mat-form-field style="width: 230px;">
+        <mat-label style="color: black;">{{sensor3.UnitID}}</mat-label>
+        <mat-select [(value)]="sensor3" (selectionChange) = 'setSensors()'>
+            <mat-option *ngFor="let s of sensors" [value]="s">{{s.UnitID}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <label style="visibility: hidden;">...</label>
+    <mat-form-field style="width: 230px;">
+        <mat-label style="color: black;">{{sensor4.UnitID}}</mat-label>
+        <mat-select [(value)]="sensor4" (selectionChange) = 'setSensors()'>
+            <mat-option *ngFor="let s of sensors" [value]="s">{{s.UnitID}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <label style="visibility: hidden;">...</label>
+    <mat-form-field style="width: 230px;">
+        <mat-label style="color: black;">{{sensor5.UnitID}}</mat-label>
+        <mat-select [(value)]="sensor5" (selectionChange) = 'setSensors()'>
+            <mat-option *ngFor="let s of sensors" [value]="s">{{s.UnitID}}</mat-option>
+        </mat-select>
+    </mat-form-field>-->
+
+    <br/>
+    <mat-label style="color:darkgray; font-size: small;">Room:</mat-label>
+        <!--<label style="visibility: hidden;">......</label>
+        <mat-form-field>
+          <input matInput type="text" style="width: 30px;" [(ngModel)]="roomNum" name="room">
+        </mat-form-field>
+        <br/>-->
+
+        <label style="visibility: hidden;">......</label>
+          <mat-form-field>
+            <input matInput type="text" style="width: 100px;" 
+                [(ngModel)]="department" name="department" placeholder="Department">
+          </mat-form-field>
+          <label style="visibility: hidden;">...</label>
+          <mat-form-field>
+            <input matInput type="text" style="width: 100px;" 
+                [(ngModel)]="roomNumber" name="roomNumber" placeholder="Room number">
+          </mat-form-field>
+          <br/>
+          <mat-label style="color:darkgray; font-size: small;">Bed:</mat-label>
+          <label style="visibility: hidden;">.........</label>
+          <mat-form-field>
+            <input matInput type="text" style="width: 100px;" 
+                [(ngModel)]="bedNumber" name="bedNumber" placeholder="Bed number">
+          </mat-form-field>
+          <label style="visibility: hidden;">...</label>
+          <mat-form-field>
+            <input matInput type="text" style="width: 100px;" 
+                [(ngModel)]="bedLocation" name="bedLocation" placeholder="Bed location">
+          </mat-form-field>
+
+          <br/>
+
+        <mat-label style="color:darkgray; font-size: small;">Normal HR range:</mat-label>
+        <label style="visibility: hidden;">......</label>
+        <mat-form-field style="width: 30px;">
+            <input matInput type="text" [(ngModel)]="minHR" name="minHR" disabled="true">
+        </mat-form-field>
+        <label style="visibility: hidden;">...</label>
+        <label>-</label>
+        <label style="visibility: hidden;">...</label>
+        <mat-form-field style="width: 30px;">
+            <input matInput type="text" [(ngModel)]="maxHR" name="maxHR" disabled="true">
+        </mat-form-field>
+        <br/>
+
+        <mat-label style="color:darkgray; font-size: small;">Normal SpO2 range:</mat-label>
+        <label style="visibility: hidden;">...</label>
+        <mat-form-field style="width: 30px;">
+            <input matInput type="text" [(ngModel)]="minSpO2" name="minSpO2" disabled="true">
+        </mat-form-field>
+        <label style="visibility: hidden;">...</label>
+        <label>-</label>
+        <label style="visibility: hidden;">...</label>
+        <mat-form-field style="width: 30px;">
+            <input matInput type="text" [(ngModel)]="maxSpO2" name="maxSpO2" disabled="true">
+        </mat-form-field>
+        <br/>
+
+        <mat-label style="color:darkgray; font-size: small;">Normal BR range:</mat-label>
+        <label style="visibility: hidden;">......</label>
+        <mat-form-field style="width: 30px;">
+            <input matInput type="text" [(ngModel)]="minBR" name="minBR" disabled="true">
+        </mat-form-field>
+        <label style="visibility: hidden;">...</label>
+        <label>-</label>
+        <label style="visibility: hidden;">...</label>
+        <mat-form-field style="width: 30px;">
+            <input matInput type="text" [(ngModel)]="maxBR" name="maxBR" disabled="true">
+        </mat-form-field>
+  </form>
+
+  <button mat-raised-button color='primary' (click)='OnSave()'>Save</button>

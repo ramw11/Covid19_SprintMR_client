@@ -1,0 +1,36 @@
+<h1>New Sensor</h1>
+
+<form class="example-form" id="info_form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Sensor name: (*)</mat-label>
+      <input matInput type="text" [(ngModel)]="sensorName" name="sensorName">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Vendor: (*)</mat-label>
+        <input matInput type="text" [(ngModel)]="sensorVendor" name="sensorVendor">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Description:</mat-label>
+      <input matInput type="text" [(ngModel)]="description" name="description">
+    </mat-form-field>
+    
+
+    <mat-label style="color:darkgray; font-size: small;">Location:</mat-label>
+        <label style="visibility: hidden;">......</label>
+          <mat-form-field>
+            <input matInput type="text" style="width: 140px;" 
+                [(ngModel)]="institute" name="institute" placeholder="Institute (*)">
+          </mat-form-field>
+          <label style="visibility: hidden;">...</label>
+          <mat-form-field>
+            <input matInput type="text" style="width: 140px;" 
+                [(ngModel)]="department" name="department" placeholder="Department (*)">
+          </mat-form-field>
+          <br/>
+
+</form>
+
+
+<button mat-raised-button color='primary' (click)='OnClick()'>Finish</button>

@@ -1,0 +1,17 @@
+<mat-card style="width: 320px;">
+    <h1>{{patientName}}</h1>
+    <label style="color:darkgray; font-size: small;">Location:</label><br/>
+    <label>{{hospital}}, {{department}}/{{roomNumber}}</label>
+    <label style="visibility: hidden;">..</label>
+    <label style="color:darkgray; font-size: small;">Bed No: </label>
+    <label style="visibility: hidden;">.</label>
+    <label>{{bedNumber}} {{bedLocation}}</label><br/><br/>
+    <label style="color:darkgray; font-size: small;">Risk group:</label>
+    <label style="visibility: hidden;">..</label>
+    <mat-checkbox [(ngModel)]="inRisk" [disabled]="disabled"></mat-checkbox><br/><br/>
+    <label style="color:darkgray; font-size: small;">Attached to respirator:</label>
+    <label style="visibility: hidden;">..</label>
+    <mat-checkbox [(ngModel)]="extraO2" [disabled]="disabled"></mat-checkbox><br/><br/>
+    <img class="roundImg" [src] = "statusPath"><br/>
+</mat-card>
+

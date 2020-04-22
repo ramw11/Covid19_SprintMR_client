@@ -1,0 +1,22 @@
+<h1>Set Default Hospital</h1>
+<form>
+    <mat-form-field style="width: 230px;">
+        <mat-select [(value)]="hospital.name" > <!--(selectionChange) = 'setSensors()'-->
+            <mat-option *ngFor="let h of hospitalsList" [value]="h">{{h}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <label style="visibility: hidden;">...</label>
+    <button mat-raised-button color='primary' (click)='SetClick()'>Set</button>
+</form>
+
+
+
+<h3>Add hospital to list:</h3>
+
+<form>
+    <mat-form-field style="width: 230px;">
+        <input matInput type="text" placeholder="New hospital" [(ngModel)]="newHospital" name="newHospital">
+      </mat-form-field>
+      <label style="visibility: hidden;">...</label>
+      <button mat-raised-button color='primary' (click)='AddHospital()'>Add</button>
+</form>

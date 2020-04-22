@@ -1,0 +1,23 @@
+<h1>Release Document</h1>
+<br/>
+
+<div id='patient_summary'>
+    <label>First name: </label>
+    <label>{{firstName}}</label>
+    <br/>
+    <br/>
+    <label>Age: </label>
+    <label>{{age}}</label>
+    <br/>
+    <br/>
+</div>
+
+<div id='remarks'>
+    <label>Remarks:</label>
+    <br/>
+    <textarea class="input_class" rows="20" [(ngModel)]="remarks"></textarea>
+</div>
+<app-patient-history></app-patient-history>
+<br/>
+
+<button mat-raised-button (click)='OnFinishClick()'>Finish</button>

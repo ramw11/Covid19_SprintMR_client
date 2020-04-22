@@ -1,0 +1,14 @@
+{
+    "server":{
+        "port": 3000
+    },
+    "es":{
+        "endpoint": "https://search-covid198-es-2-x6zr2th7oiq7sjzp653cs3k3xm.eu-west-1.es.amazonaws.com",
+        "region": "eu-west-1",
+        "indexes":{
+            "mr":"measure_results_v5",
+            "patients":"patients_v1",
+            "sensors":"sensors_v1"
+        }
+    }
+}

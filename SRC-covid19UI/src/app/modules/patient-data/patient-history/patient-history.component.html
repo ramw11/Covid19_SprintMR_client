@@ -1,0 +1,30 @@
+<h2 style="width: 100%;">Patient History:</h2>
+
+<div style="width: 100%; display: flex; flex-flow: row wrap;">
+<mat-card id="alerts_history" >
+  <div>
+      <label><b>Alerts:</b></label>
+      <ul>
+        <li *ngFor="let alert of alerts">
+          <b>{{ alert.name }}</b> : {{alert.time.toLocaleString()}}
+        </li>
+      </ul>
+    </div>
+</mat-card>
+
+<mat-card id="scoring_graph">
+  <div class="chart-wrapper"> 
+      <canvas baseChart 
+          [datasets]="lineChartData" 
+          [labels]="lineChartLabels" 
+          [options]="lineChartOptions"
+          [colors]="lineChartColors" 
+          [legend]="lineChartLegend" 
+          [chartType]="lineChartType" 
+          [plugins]="lineChartPlugins">
+      </canvas>
+  </div>
+</mat-card>
+</div>
+
+

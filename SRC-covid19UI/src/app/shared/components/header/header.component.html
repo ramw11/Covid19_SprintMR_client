@@ -1,0 +1,68 @@
+<mat-toolbar color='primary'>
+    <mat-toolbar-row>
+        <a routerLink="">
+            <div>
+                <span (click)='OnClick()'>
+                    <img [src]='logo_path' height='170px' style="position: relative; left: -30px; top:5px"/>
+                </span>
+            </div>
+        </a>
+
+        <!--<label style="visibility: hidden;">
+            ................................................................
+        </label>-->
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" style="position: absolute; right: 40px;">
+            <mat-icon>settings</mat-icon>
+        </button>
+        
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)='newSensor()'>New sensor</button>
+                <button mat-menu-item (click)='setHospital()'>Set hospital</button>
+            </mat-menu>
+
+            <button mat-icon-button (click)='OnClick()' style="position: absolute; right: 0;">
+                <mat-icon>home</mat-icon>
+            </button>
+
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<!--
+    <mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span> APP LOGO </span>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>help_outline</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon>person_outline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <mat-icon>exit_to_app</mat-icon>
+                            Sign out
+                        </button>
+                    </mat-menu>
+
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+-->

@@ -1,0 +1,49 @@
+.top{
+    width: 80px;
+    height: 5px;
+    border-top: solid;
+    border-left: solid;
+    border-right: solid;
+    border-color: aqua;
+    background-color: black;
+    text-align: right;
+    padding-bottom: 0%;
+}
+
+.square{
+    width: 80px;
+    height: 55px;
+    border-bottom: solid;
+    border-left: solid;
+    border-right: solid;
+    background-color: black;
+    text-align: center;
+    border-color: aqua;
+}
+
+.TMP{
+    font-size: xx-large;
+    text-align: center;
+    //width: 70px;
+    color: aqua;
+    // display: inline;
+    vertical-align: middle;
+    // display: table-cell;
+    width: 80px;
+}
+
+.warning_visible {
+    width: 20px; 
+    position: relative; 
+    left: 0; 
+    top: 3px;
+    visibility: visible;
+}
+
+.warning_hidden {
+    width: 20px; 
+    position: relative; 
+    left: 0; 
+    top: 3px;
+    visibility: visible;
+}
