@@ -127,8 +127,8 @@ exports.esGetAllSensors = function (req, res) {
 }
 exports.esGetAllPatients = function (req, res) {
     esQuery('patients_v1', 'patient', (hits) => {
-        req.send(hits);
-        req.end();
+        res.send(hits);
+        res.end();
     }, (err) => {
         res.send('ERROR: ' + err);
         res.end();
