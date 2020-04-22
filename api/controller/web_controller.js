@@ -15,8 +15,8 @@ const client_prd = aeclient(options_PRD);
 
 let redis = require('redis'),
     clientRedis = redis.createClient({
-        port: 6379,               // replace with your port
-        host: 'cv19redis-001.d9jy7a.0001.euw1.cache.amazonaws.com'
+        port: cfgFile.redis.port,               // replace with your port
+        host: cfgFile.redis.endpoint
     });
 
 //isESClientAlive(clientRedis);
@@ -102,7 +102,7 @@ exports.esGetPatientMR = function (req, res) {
             function (err, resp, status) {
                 if (resp) {
                     // do something
-                    console.log(resp.hits.hits);
+                    //console.log(resp.hits.hits);
                     res.send(resp.hits.hits);
                     res.end();
                 }
@@ -150,7 +150,7 @@ async function esQuery(idx, req_type, onSuccess, onErr) {
         function (err, resp, status) {
             if (resp) {
                 // do something
-                console.log(resp.hits.hits);
+                //console.log(resp.hits.hits);
                 onSuccess(resp.hits.hits);
             }
             else {
