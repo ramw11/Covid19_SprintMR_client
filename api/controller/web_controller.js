@@ -118,11 +118,11 @@ exports.esGetPatientMR = function (req, res) {
 exports.esGetAllSensors = function (req, res) {
     console.log('/getAllSensors');
     esQuery('sensors_v1', 'sensor', (hits) => {
-        req.send(hits);
-        req.end();
+        res.send(hits);
+        res.end();
     }, (err) => {
-        req.send('ERROR: ' + err);
-        req.end();
+        res.send('ERROR: ' + err);
+        res.end();
     });
 }
 exports.esGetAllPatients = function (req, res) {
@@ -130,8 +130,8 @@ exports.esGetAllPatients = function (req, res) {
         req.send(hits);
         req.end();
     }, (err) => {
-        req.send('ERROR: ' + err);
-        req.end();
+        res.send('ERROR: ' + err);
+        res.end();
     });
 }
 
