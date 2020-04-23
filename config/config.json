@@ -8,7 +8,8 @@
         "indexes":{
             "mr":"measure_results_v5",
             "patients":"patients_v1",
-            "sensors":"sensors_v1"
+            "sensors":"sensors_v1",
+            "patients_status": "patient_status"
         }
     },
     "redis":{

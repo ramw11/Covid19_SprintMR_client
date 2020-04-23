@@ -58,7 +58,7 @@ exports.esTimeQuery = function (req, res) {
     console.log(`from=${from}   to=${to}`);
     if (from != undefined && to != undefined) {
         client_prd.search({
-            index: 'measure_results_v5', // to config
+            index: cfgFile.es.indexes.mr, // to config
             size: 100,
             body: {
                 sort: [{ "timeTag": { "order": "desc" } }],
@@ -90,7 +90,7 @@ exports.esGetPatientMR = function (req, res) {
     console.log(`patient id=${patientId}`);
     if (patientId != undefined) {
         client_prd.search({
-            index: 'measure_results_v5', //config
+            index: cfgFile.es.indexes.mr, //config
             size: 1000,
             body: {
                 sort: [{ "timeTag": { "order": "desc" } }],
@@ -117,7 +117,7 @@ exports.esGetPatientMR = function (req, res) {
 
 exports.esGetAllSensors = function (req, res) {
     console.log('/getAllSensors');
-    esQuery('sensors_v1', 'sensor', (hits) => {
+    esQuery(cfgFile.es.indexes.sensors, 'sensor', (hits) => {
         res.send(hits);
         res.end();
     }, (err) => {
@@ -125,8 +125,18 @@ exports.esGetAllSensors = function (req, res) {
         res.end();
     });
 }
-exports.esGetAllPatients = function (req, res) {
-    esQuery('patients_v1', 'patient', (hits) => {
+exports.esGetAllPatients = (req, res)=> {
+    esQuery(cfgFile.es.indexes.patients, 'patient', (hits) => {
+        res.send(hits);
+        res.end();
+    }, (err) => {
+        res.send('ERROR: ' + err);
+        res.end();
+    });
+}
+
+exports.esGetAllPatientsStatus= (req,res)=>{
+    esQuery(cfgFile.es.indexes.patients_status, 'patient', (hits) => {
         res.send(hits);
         res.end();
     }, (err) => {
